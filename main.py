@@ -35,5 +35,11 @@ def test_question(message):
     bot.send_message(message.chat.id, q.answer)
 
 
+@bot.message_handler(content_types=['text'])
+def text_handler(message):
+    if message.text.lower() == "нет":
+        bot.send_message(message.chat.id, "пидора ответ")
+
+
 bot.polling()
 

@@ -12,14 +12,20 @@ cache = Cache()
 
 @bot.message_handler(commands=['вопрос'])
 def ask_question(message):
-    q = chgkDb.getQuestion()
-    cache.put(q, message.chat.id)
-    bot.send_message(message.chat.id, q.question)
+    try:
+        q = chgkDb.getQuestion()
+        cache.put(q, message.chat.id)
+        bot.send_message(message.chat.id, q.question)
+    except:
+        bot.send_message(message.chat.id, "Что-то пошло не так.")
 
 
 @bot.message_handler(commands=['ответ'])
 def get_answer(message):
-    bot.send_message(message.chat.id, cache.get(message.chat.id).answer)
+    try:
+        bot.send_message(message.chat.id, cache.get(message.chat.id).answer)
+    except:
+        bot.send_message(message.chat.id, "Что-то пошло не так.")
 
 
 @bot.message_handler(commands=['тест'])

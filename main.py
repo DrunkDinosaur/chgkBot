@@ -13,13 +13,13 @@ cache = Cache()
 @bot.message_handler(commands=['вопрос'])
 def ask_question(message):
     q = chgkDb.getQuestion()
-    cache.put(q)
+    cache.put(q, message.chat.id)
     bot.send_message(message.chat.id, q.question)
 
 
 @bot.message_handler(commands=['ответ'])
-def ask_question(message):
-    bot.send_message(message.chat.id, cache.get().answer)
+def get_answer(message):
+    bot.send_message(message.chat.id, cache.get(message.chat.id).answer)
 
 
 @bot.message_handler(commands=['тест'])

@@ -114,4 +114,4 @@ dmypy.json
 .pyre/
 
 api_key.py
-.idea/
+.idea

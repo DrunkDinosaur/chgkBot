@@ -29,12 +29,12 @@ def get_answer(message):
 
 
 @bot.message_handler(commands=['тест'])
-def test_question(message):
+def test(message):
     text_file = open('test_data/test_question', "r")
-    testQuestion = text_file.read()
+    test_question = text_file.read()
     text_file.close()
 
-    soup = b(testQuestion, 'html.parser')
+    soup = b(test_question, 'html.parser')
     question = soup.find_all('div', class_='random_question')[0]
     q = chgkDb.parse_question(question)
     bot.send_message(message.chat.id, q.question)

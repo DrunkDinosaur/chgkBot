@@ -4,7 +4,6 @@ from cache import Cache
 from api_key import API_KEY
 
 from bs4 import BeautifulSoup as b
-from question import Question
 
 bot = telebot.TeleBot(API_KEY)
 cache = Cache()

@@ -15,7 +15,7 @@ def ask_question(message):
         q = chgkDb.getQuestion()
         cache.put(q, message.chat.id)
         bot.send_message(message.chat.id, q.question)
-    except:
+    except Exception:
         bot.send_message(message.chat.id, "Что-то пошло не так.")
 
 
@@ -23,7 +23,7 @@ def ask_question(message):
 def get_answer(message):
     try:
         bot.send_message(message.chat.id, cache.get(message.chat.id).answer)
-    except:
+    except Exception:
         bot.send_message(message.chat.id, "Что-то пошло не так.")
 
 
